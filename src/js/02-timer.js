@@ -42,7 +42,6 @@ function onBtnclick() {
     const choseDate = calendars.selectedDates[0].getTime();
 
     let deltaTime = choseDate - currentDate;
-    // console.log(deltaTime);
 
     if (deltaTime > 0) {
       const timeArray = convertMs(deltaTime);
