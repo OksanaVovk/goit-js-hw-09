@@ -19,10 +19,15 @@ formEl.addEventListener('submit', onFormClick);
 function onFormClick(event) {
   event.preventDefault();
   let delayV = Number(event.target.delay.value);
+  let amountV = Number(event.target.amount.value);
+  let stepV = Number(event.target.step.value);
+  if (delayV < 0 || amountV < 0 || stepV < 0) {
+    return Notiflix.Notify.info('Please enter positive number');
+  }
   const dataPromise = [];
-  for (let positionV = 1; positionV <= Number(event.target.amount.value); positionV += 1) {
+  for (let positionV = 1; positionV <= amountV; positionV += 1) {
     dataPromise.push({ position: positionV, delay: delayV });
-    delayV += Number(event.target.step.value);
+    delayV += stepV;
   }
 
   dataPromise.forEach(item => {
